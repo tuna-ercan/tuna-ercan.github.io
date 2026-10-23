@@ -80,6 +80,8 @@ body {
     width: 100%;
     min-height: 100vh;
     transition: 0.5s;
+    padding: 0 5%;
+    box-sizing: border-box;
 }
 
 header {
