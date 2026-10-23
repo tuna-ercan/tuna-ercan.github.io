@@ -11,6 +11,7 @@
 body {
     background-color: #3d3d3d;
     padding: 0%;
+    margin: 0;
 }
 
 ::-webkit-scrollbar
@@ -80,7 +81,7 @@ body {
     width: 100%;
     min-height: 100vh;
     transition: 0.5s;
-    padding: 0 5%;
+    padding: 1.5%;
     box-sizing: border-box;
 }
 
@@ -191,6 +192,7 @@ header #toggle::after
     min-height: 200px;
     background-color: white;
     text-align: center;
+    border-radius: 6px 6px 0 0;
 }
 
 #faceSec
@@ -212,6 +214,7 @@ header #toggle::after
 {
     height: 50px;
     background-color: white;
+    border-radius: 0 0 6px 6px;
 }
 #space__
 {

@@ -6,6 +6,7 @@
 body {
     background-color: #3d3d3d;
     padding: 0%;
+    margin: 0;
 }
 
 ::-webkit-scrollbar
@@ -75,6 +76,8 @@ body {
     width: 100%;
     min-height: 100vh;
     transition: 0.5s;
+    padding: 1.5%;
+    box-sizing: border-box;
 }
 
 header {
@@ -101,7 +104,7 @@ header #toggle::before
     top: 25%;
     width: 100%;
     height: 4px;
-    background: white;
+    background: #3d3d3d;
 }
 
 header #toggle::after
@@ -111,7 +114,7 @@ header #toggle::after
     bottom: 25%;
     width: 100%;
     height: 4px;
-    background: white;
+    background: #3d3d3d;
 }
 
 .page.active header #toggle::before
@@ -184,7 +187,7 @@ header #toggle::after
     left: 50%;
     align-self: center;
     font-family: mainFont;
-    color: #f0f0f0;
+    color: #3d3d3d;
     transform: translate(-50%,55%);
     font-size: 2em;
     text-decoration-color: #962fbf;
@@ -203,11 +206,10 @@ header #toggle::after
 #secBackground
 {
     width: 100%;
-    max-width: 840px;
-    margin: 0 auto;
     min-height: 200px;
-    padding: 0 18px 48px;
-    background-color: transparent;
+    padding: 0 16px 44px;
+    background-color: white;
+    border-radius: 6px;
     box-sizing: border-box;
 }
 
@@ -236,7 +238,7 @@ header #toggle::after
     width: 100%;
     display: block;
     border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
 }
 
 footer {
