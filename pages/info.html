@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <div id="progressBar"></div>
+    <div id="scrollPath"></div>
+
     <section class="page" id="all">
 
         <h1>Hi There!</h1>
@@ -67,19 +70,19 @@
 
     <script type="text/javascript">
         document.querySelector('body').addEventListener('mousemove', eyeball);
-        function eyeball()
+        function eyeball(event)
         {
-            var eye = document.querrySelectorAll(".eye");
+            var eye = document.querySelectorAll(".eye");
             eye.forEach(function(eye){
                 let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
                 let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
-                let radian = Math.atan2(event.pageX - x, event.pageY -y);
+                let radian = Math.atan2(event.pageX - x, event.pageY - y);
                 let rot = (radian * (180 / Math.PI) * -1) + 270;
-                //eye.style.transform = "rotate(" + rot + "deg)";
+                eye.style.transform = "rotate(" + rot + "deg)";
             });
         }
     </script>
 
-    <footer><div> © 2020 Tuna Ercan</div></footer>
+    <footer><div> © 2026 Tuna Ercan</div></footer>
 </body>
 </html>
