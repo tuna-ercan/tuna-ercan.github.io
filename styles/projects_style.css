@@ -1,323 +1,128 @@
-@font-face {
-    font-family: mainFont;
-    src: url("../fonts/fjallaone.ttf");
-}
+/* =====================================================================
+   projects_style.css  -  ONLY FOR THE PROJECTS LIST (pages/projects.html)
+   =====================================================================
 
-body {
-    background-color: #3d3d3d;
-    padding: 0%;
+   A white card with a "Hi!" title and one rounded button per project.
+
+   Shared parts (menu, footer, progress bar, page margin) are in
+   common.css. Colours and sizes come from variables.css.
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   TITLE
+   --------------------------------------------------------------------- */
+
+/* "Hi!" at the top centre of the white card.
+   It sits inside the card (#secBackground), --page-title-top below its
+   top edge. left 50% + translateX(-50%) centres it horizontally. */
+h1 {
+    position: absolute;
+    top: var(--page-title-top);
+    left: 50%;
+    transform: translateX(-50%);
     margin: 0;
-}
-
-::-webkit-scrollbar
-{
-    width: 0;
-}
-
-#scrollPath
-{
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 8px;
-    height: 100%;
-    background-color: rgba(255,255,255,0.05);
-}
-
-#progressBar
-{
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 8px;
-    background: linear-gradient(to top, #008aff, #00ffe7);
-    animation: animate 5s linear infinite;
-}
-
-@keyframes animate
-{
-    0%,100%
-    {
-        filter: hue-rotate(0deg);
-    }
-    50%
-    {
-        filter: hue-rotate(360deg);
-    }
-}
-
-#progressBar:before
-{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, #008aff, #00ffe7);
-    filter: blur(10px);
-}
-
-#progressBar:after
-{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, #008aff, #00ffe7);
-    filter: blur(30px);
-}
-
-#all
-{
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    transition: 0.5s;
-    padding: 1.5%;
-    box-sizing: border-box;
-}
-
-header {
-    position: absolute;
-    justify-content: space-between;
-    display: flex;
-    padding: 30px 30px;
-    z-index: 10000;
-    transition: 0.6s;
-}
-
-header #toggle
-{
-    position: relative;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-
-header #toggle::before
-{
-    content: '';
-    position: absolute;
-    top: 25%;
-    width: 100%;
-    height: 4px;
-    background: #3d3d3d;
-}
-
-header #toggle::after
-{
-    content: '';
-    position: absolute;
-    bottom: 25%;
-    width: 100%;
-    height: 4px;
-    background: #3d3d3d;
-}
-
-.page.active header #toggle::before
-{
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) rotate(45deg);
-}
-
-.page.active header #toggle::after
-{
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) rotate(-45deg);
-}
-
-.page.active {
-    transform: translateX(400px);
-}
-
-#navigation
-{
-    display: block;
-    position: fixed;
-    top: 0;
-    left: -400px;
-    width: 392px;
-    height: 100vh;
-    background: rgb(177,145,255);
-    background: linear-gradient(15deg, rgba(177,145,255,1) 21%, rgba(248,118,102,1) 100%);
-    display: grid;
-    place-items: center;
-
-}
-
-#navigation ul
-{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    transform: translateX(-10%);
-}
-
-#navigation ul li
-{
-    list-style: none;
-    padding-top: 25px;
-}
-
-#navigation ul li a
-{
-    color: white;
-    text-decoration: none;
-    display: inline-block;
+    font-family: var(--font-main);
     font-size: 3em;
-    font-weight: 250;
-    text-transform: uppercase;
-    font-family: mainFont;
-
-}
-
-#navigation ul li a:hover
-{
-    color: #3d3d3d;
-}
-
-#secBackground
-{
-    width: 100%;
-    min-height: 600px;
-    background-color: white;
-    border-radius: 6px;
-}
-
-#space
-{
-    height: 200px;
-}
-#space_
-{
-    height: 25px;
-}
-
-h1
-{
-    position: absolute;
-    left: 50%;
-    align-self: center;
-    font-family: mainFont;
-    color: #3d3d3d;
-    transform: translate(-50%,55%);
-    font-size: 3em;
-    padding-top: 0;
+    color: var(--color-text);
     text-decoration: underline;
 }
 
-#myProjectsUL
-{
-    padding: 0;
-}
- 
-.projectLi
-{
-    display: grid;
-    place-items: center;
-    list-style: none;
-    margin-left: 0;
+
+/* ---------------------------------------------------------------------
+   WHITE CARD
+   --------------------------------------------------------------------- */
+
+#secBackground {
+    position: relative;   /* the title is placed relative to this card */
     width: 100%;
+    min-height: 600px;
+    background-color: var(--color-card);
+    border-radius: var(--card-radius);
+}
+
+/* Empty space at the top of the card, under the title */
+#space {
+    height: 200px;
+}
+
+
+/* ---------------------------------------------------------------------
+   PROJECT BUTTONS
+   Each project is an <li class="projectLi"> with a link and a title.
+   --------------------------------------------------------------------- */
+
+#myProjectsUL {
     padding: 0;
 }
 
-.projectLi a div
-{
+/* One row of the list; centres its button */
+.projectLi {
     display: grid;
     place-items: center;
-    position: relative;
-    background-color: antiquewhite;
-    height: 70px;
-    width: 800px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 50px;
-
-}
-
-.projectLi a div:hover 
-{
-    box-shadow: 0 4px 8px 0 rgba(177, 145, 255, 0.8), 0 6px 20px 0 rgba(177, 145, 255, 0.8);
-}
-
-.contentTitle
-{   
-    margin: 0;
+    width: 100%;
+    margin-left: 0;
     padding: 0;
-    font-family: mainFont;
+    list-style: none;
+}
+
+/* Space between buttons when there is more than one project */
+.projectLi + .projectLi {
+    margin-top: var(--project-button-gap);
+}
+
+/* The rounded button itself */
+.projectLi a div {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 800px;
+    height: 70px;
+    border-radius: 50px;
+    background-color: var(--color-project-button);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* On hover the shadow turns into a purple glow */
+.projectLi a div:hover {
+    box-shadow: 0 4px 8px 0 var(--color-accent-2-glow), 0 6px 20px 0 var(--color-accent-2-glow);
+}
+
+/* The project's name written on the button */
+.contentTitle {
     width: 100%;
     height: 100%;
-    font-size: 2em;
-    color: #3d3d3d;
+    margin: 0;
+    padding: 0;
     text-align: center;
+    font-family: var(--font-main);
+    font-size: 2em;
+    color: var(--color-text);
 }
 
+
+/* ---------------------------------------------------------------------
+   SMALLER SCREENS: make the buttons narrower so they still fit
+   --------------------------------------------------------------------- */
+
 @media only screen and (max-width: 850px) {
-    .projectLi a div{
+    .projectLi a div {
         width: 600px;
     }
 }
 
 @media only screen and (max-width: 670px) {
-    .projectLi a div{
+    .projectLi a div {
         width: 440px;
     }
 }
 
 @media only screen and (max-width: 550px) {
-
-    .contentTitle
-    {
+    .contentTitle {
         font-size: 1.4em;
     }
 
-    .projectLi a div
-    {
+    .projectLi a div {
         width: 300px;
     }
-
-  }
-
-footer {
-    background-color: #f87666;
-    background-attachment: scroll;
-    padding: 3px 3px 0 0;
-    position: fixed;
-    bottom: 0pt;
-    left: 0;
-    display: block;
-    width: 100%;
-}
-
-footer div{
-    padding-left: 4px;
-}
-
-@media only screen and (max-width: 475px) {
-    header{
-        padding: 10px 15px;
-    }
-}
-
-@media only screen and (min-width: 1050px) {
-    header #toggle
-    {
-        width: 40px;
-        height: 40px;
-    }
-
-    header #toggle::before
-    {
-        height: 5px;
-    }
-
-    header #toggle::after
-    {
-        height: 5px;
-    }
-
 }

@@ -1,0 +1,101 @@
+/* =====================================================================
+   variables.css  -  ALL THE SETTINGS FOR THE WHOLE SITE IN ONE PLACE
+   =====================================================================
+
+   Every page loads this file first. It only defines "variables"
+   (CSS custom properties). The other stylesheets use them like this:
+
+       color: var(--color-text);
+
+   So if you change a value here, it changes on every page that uses it.
+   Example: change --page-margin from 1.5% to 3% and the grey border
+   around every page gets twice as wide.
+
+   Colours can be written as names (white), hex codes (#3d3d3d)
+   or rgba(red, green, blue, opacity).
+   ===================================================================== */
+
+:root {
+
+    /* ------------------------------------------------------------------
+       MAIN COLOURS (used on every page)
+       ------------------------------------------------------------------ */
+
+    --color-background: #3d3d3d;   /* the grey behind the white cards */
+    --color-card:       white;     /* the white cards (gallery, info, projects, project pages) */
+    --color-card-home:  #f9f9fa;   /* the homepage card (a very slightly greyish white) */
+    --color-text:       #3d3d3d;   /* dark text and headings */
+
+    --color-accent:     #f87666;   /* coral: footer bar, link hover, bottom of the menu gradient */
+    --color-accent-2:   #b191ff;   /* purple: top of the menu gradient, hover colours */
+    --color-accent-2-glow: rgba(177, 145, 255, 0.8); /* the purple, a bit see-through (project button glow) */
+
+    --color-link:       #9593D9;   /* links on the Info page */
+
+
+    /* ------------------------------------------------------------------
+       SLIDE-OUT MENU
+       ------------------------------------------------------------------ */
+
+    --color-menu-icon:       #3d3d3d; /* the 3-line (hamburger) icon on most pages */
+    --color-menu-icon-home:  white;   /* the icon on the homepage (it sits on the photo) */
+    --color-menu-text:       white;   /* menu links */
+    --color-menu-text-hover: #3d3d3d; /* menu links when the mouse is over them */
+
+    --menu-width: 400px;              /* how far the page slides right when the menu opens */
+
+
+    /* ------------------------------------------------------------------
+       SCROLL PROGRESS BAR (the glowing bar on the right edge)
+       ------------------------------------------------------------------ */
+
+    --progress-bar-width:   8px;
+    --color-progress-start: #008aff;                  /* bottom colour of the bar */
+    --color-progress-end:   #00ffe7;                  /* top colour of the bar */
+    --color-progress-track: rgba(255, 255, 255, 0.05); /* faint line the bar grows along */
+
+
+    /* ------------------------------------------------------------------
+       PAGE LAYOUT
+       ------------------------------------------------------------------ */
+
+    --page-margin: 1.5%;   /* grey space around the white card (top and sides) */
+    --card-radius: 6px;    /* how rounded the white card's corners are */
+    --page-title-top: 20px; /* space between the top of the white card and the
+                               page title ("Hi There!", "Hi!"); 20px lines the
+                               title up with the menu icon */
+
+
+    /* ------------------------------------------------------------------
+       FONT
+       ------------------------------------------------------------------ */
+
+    /* "mainFont" is the Fjalla One font file, loaded in common.css */
+    --font-main: mainFont;
+
+
+    /* ------------------------------------------------------------------
+       PAGE-SPECIFIC COLOURS AND SIZES
+       ------------------------------------------------------------------ */
+
+    /* Gallery */
+    --photo-radius: 10px;                            /* rounded corners of the photos */
+    --photo-gap:    14px;                            /* space between the photos */
+    --photo-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);  /* soft shadow under each photo */
+    --color-instagram-underline: #962fbf;
+    --gradient-instagram: linear-gradient(15deg, #feda75, #fa7e1e, #d62975, #962fbf, #4f5bd5);
+
+    /* Projects */
+    --color-project-button: antiquewhite;  /* background of each project button */
+    --project-button-gap:   25px;          /* space between project buttons */
+
+    /* Info page smiley face */
+    --color-face:  #ffcd00;
+    --color-mouth: #b57700;
+    --color-eye:   white;
+    --color-pupil: #3d3d3d;
+
+    /* Project article pages ("How I Made This Website") */
+    --color-title-underline: #551a8b;
+    --article-photo-max-width: 800px;      /* widest a photo can be on a project page */
+}

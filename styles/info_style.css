@@ -1,370 +1,191 @@
-@font-face {
-    font-family: mainFont;
-    src: url("../fonts/fjallaone.ttf");
-}
+/* =====================================================================
+   info_style.css  -  ONLY FOR THE INFO PAGE (pages/info.html)
+   =====================================================================
 
-*
-{
+   The white card on this page is made of four blocks stacked on top of
+   each other (top to bottom):
+     #secBackground  - text and contact links  (rounded top corners)
+     #space__        - white gap
+     #faceSec        - the smiley face
+     #space_         - white gap                (rounded bottom corners)
+
+   Shared parts (menu, footer, progress bar, page margin) are in
+   common.css. Colours and sizes come from variables.css.
+   The moving eyes are done in scripts/info.js.
+   ===================================================================== */
+
+
+/* On this page, width/height include padding for every element.
+   (Only this page has always used it, so it stays here to keep the
+   layout exactly as it was.) */
+* {
     box-sizing: border-box;
 }
 
-body {
-    background-color: #3d3d3d;
-    padding: 0%;
+
+/* ---------------------------------------------------------------------
+   TITLE
+   --------------------------------------------------------------------- */
+
+/* "Hi There!" at the top centre of the white card.
+   It sits inside the card (#secBackground), --page-title-top below its
+   top edge. left 50% + translateX(-50%) centres it horizontally. */
+h1 {
+    position: absolute;
+    top: var(--page-title-top);
+    left: 50%;
+    transform: translateX(-50%);
     margin: 0;
-}
-
-::-webkit-scrollbar
-{
-    width: 0;
-}
-
-#scrollPath
-{
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 8px;
-    height: 100%;
-    background-color: rgba(255,255,255,0.05);
-}
-
-#progressBar
-{
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 8px;
-    background: linear-gradient(to top, #008aff, #00ffe7);
-    animation: animate 5s linear infinite;
-}
-
-@keyframes animate
-{
-    0%,100%
-    {
-        filter: hue-rotate(0deg);
-    }
-    50%
-    {
-        filter: hue-rotate(360deg);
-    }
-}
-
-#progressBar:before
-{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, #008aff, #00ffe7);
-    filter: blur(10px);
-}
-
-#progressBar:after
-{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, #008aff, #00ffe7);
-    filter: blur(30px);
-}
-
-#all
-{
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    transition: 0.5s;
-    padding: 1.5%;
-    box-sizing: border-box;
-}
-
-header {
-    position: absolute;
-    justify-content: space-between;
-    display: flex;
-    padding: 30px 30px;
-    z-index: 10000;
-    transition: 0.6s;
-}
-
-header #toggle
-{
-    position: relative;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-
-header #toggle::before
-{
-    content: '';
-    position: absolute;
-    top: 25%;
-    width: 100%;
-    height: 4px;
-    background: #3d3d3d;
-}
-
-header #toggle::after
-{
-    content: '';
-    position: absolute;
-    bottom: 25%;
-    width: 100%;
-    height: 4px;
-    background: #3d3d3d;
-}
-
-.page.active header #toggle::before
-{
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) rotate(45deg);
-}
-
-.page.active header #toggle::after
-{
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) rotate(-45deg);
-}
-
-.page.active {
-    transform: translateX(400px);
-}
-
-#navigation
-{
-    display: block;
-    position: fixed;
-    top: 0;
-    left: -400px;
-    width: 392px;
-    height: 100vh;
-    background: rgb(177,145,255);
-    background: linear-gradient(15deg, rgba(177,145,255,1) 21%, rgba(248,118,102,1) 100%);
-    display: grid;
-    place-items: center;
-
-}
-
-#navigation ul
-{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    transform: translateX(-10%);
-}
-
-#navigation ul li
-{
-    list-style: none;
-    padding-top: 25px;
-}
-
-#navigation ul li a
-{
-    color: white;
-    text-decoration: none;
-    display: inline-block;
+    font-family: var(--font-main);
     font-size: 3em;
-    font-weight: 250;
-    text-transform: uppercase;
-    font-family: mainFont;
-
-}
-
-#navigation ul li a:hover
-{
-    color: #3d3d3d;
-}
-
-#secBackground
-{
-    width: 100%;
-    min-height: 200px;
-    background-color: white;
-    text-align: center;
-    border-radius: 6px 6px 0 0;
-}
-
-#faceSec
-{
-    width: 100%;
-    min-height: 200px;
-    background-color: white;
-    text-align: center;  
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-}
-
-#space
-{
-    height: 150px;
-}
-#space_
-{
-    height: 50px;
-    background-color: white;
-    border-radius: 0 0 6px 6px;
-}
-#space__
-{
-    height: 40px;
-    background-color: white;
-}
-
-h1
-{
-    position: absolute;
-    left: 50%;
-    align-self: center;
-    font-family: mainFont;
-    color: #3d3d3d;
-    transform: translate(-50%,55%);
-    font-size: 3em;
-    padding-top: 0;
+    color: var(--color-text);
     text-decoration: underline;
 }
 
-p
-{
-    margin: 10px;
-    padding: 5px;
-    font-family: mainFont;
-    font-size: 2em;
-    color: #3d3d3d;
+
+/* ---------------------------------------------------------------------
+   WHITE CARD
+   --------------------------------------------------------------------- */
+
+/* Top block: text and links */
+#secBackground {
+    position: relative;   /* the title is placed relative to this card */
+    width: 100%;
+    min-height: 200px;
+    text-align: center;
+    background-color: var(--color-card);
+    border-radius: var(--card-radius) var(--card-radius) 0 0;  /* top corners only */
 }
 
-#studentTxt
-{
-    padding-bottom: 25px;
+/* Empty space at the top of the card, under the title */
+#space {
+    height: 150px;
 }
 
-a
-{
-    display: inline;
-    font-family: mainFont;
-    font-size: 2em;
-    color: #9593D9;
+/* White gap between the links and the face */
+#space__ {
+    height: 40px;
+    background-color: var(--color-card);
 }
 
-a:hover 
-{
-    color: #f87666;
-    text-decoration: none;
-}
-
-.face
-{
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: #ffcd00;
+/* Block holding the smiley face, centred */
+#faceSec {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    min-height: 200px;
+    text-align: center;
+    background-color: var(--color-card);
 }
 
-.face::before
-{
+/* Bottom block: white gap that closes the card */
+#space_ {
+    height: 50px;
+    background-color: var(--color-card);
+    border-radius: 0 0 var(--card-radius) var(--card-radius);  /* bottom corners only */
+}
+
+
+/* ---------------------------------------------------------------------
+   TEXT AND LINKS
+   --------------------------------------------------------------------- */
+
+p {
+    margin: 10px;
+    padding: 5px;
+    font-family: var(--font-main);
+    font-size: 2em;
+    color: var(--color-text);
+}
+
+/* Extra space under the "I'm a ... student" sentence */
+#studentTxt {
+    padding-bottom: 25px;
+}
+
+/* LinkedIn and mail links */
+a {
+    display: inline;
+    font-family: var(--font-main);
+    font-size: 2em;
+    color: var(--color-link);
+}
+
+a:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+
+/* ---------------------------------------------------------------------
+   SMILEY FACE
+   --------------------------------------------------------------------- */
+
+/* The yellow circle */
+.face {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: var(--color-face);
+}
+
+/* The mouth: a half circle drawn with a rounded bottom */
+.face::before {
     content: '';
     position: absolute;
     top: 180px;
     width: 150px;
     height: 70px;
-    background-color: #b57700;
+    background-color: var(--color-mouth);
     border-bottom-left-radius: 70px;
     border-bottom-right-radius: 70px;
     transition: 0.5s;
 }
 
-.face:hover::before
-{
+/* Hovering over the face flattens the mouth into a straight line */
+.face:hover::before {
     top: 210px;
     width: 150px;
     height: 20px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
-.eyes
-{
+/* The two eyes, side by side, a bit above the centre */
+.eyes {
     position: relative;
     top: -40px;
     display: flex;
 }
 
-.eyes .eye
-{
+/* One eye: a white circle. info.js rotates it to follow the mouse. */
+.eyes .eye {
     position: relative;
+    display: block;
     width: 80px;
     height: 80px;
-    display: block;
-    background-color: white;
     margin: 0 15px;
     border-radius: 50%;
+    background-color: var(--color-eye);
 }
 
-.eyes .eye::before
-{
+/* The pupil. It sits on the LEFT side of the eye (its centre is 25px
+   from the eye's left edge; the eye's middle is at 40px). info.js
+   rotates the whole eye so this left side faces the mouse.
+   Set left to 40px and the pupil is centred and stops moving. */
+.eyes .eye::before {
     content: '';
     position: absolute;
     top: 50%;
-    left: 40px;
-    transform: translate(-50%,-50%);
+    left: 25px;
+    transform: translate(-50%, -50%);
     width: 40px;
     height: 40px;
-    background-color: #3d3d3d;
     border-radius: 50%;
-}
-
-
-footer {
-    background-color: #f87666;
-    background-attachment: scroll;
-    padding: 3px 3px 0 0;
-    position: fixed;
-    bottom: 0pt;
-    left: 0;
-    display: block;
-    width: 100%;
-}
-
-footer div{
-    padding-left: 4px;
-}
-
-@media only screen and (max-width: 475px) {
-    header{
-        padding: 10px 15px;
-    }
-}
-
-@media only screen and (min-width: 1050px) {
-    header #toggle
-    {
-        width: 40px;
-        height: 40px;
-    }
-
-    header #toggle::before
-    {
-        height: 5px;
-    }
-
-    header #toggle::after
-    {
-        height: 5px;
-    }
-
+    background-color: var(--color-pupil);
 }

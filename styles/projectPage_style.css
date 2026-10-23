@@ -1,340 +1,135 @@
-@font-face {
-    font-family: mainFont;
-    src: url("../fonts/fjallaone.ttf");
-}
+/* =====================================================================
+   projectPage_style.css  -  FOR PROJECT ARTICLE PAGES
+   (pages/project/*.html, e.g. "How I Made This Website")
+   =====================================================================
 
-body {
-    background-color: #3d3d3d;
-    padding: 0%;
-}
+   A white card with a big centred title, then sections made of an
+   <h2> heading and a <div class="paragSec"> paragraph.
 
-::-webkit-scrollbar
-{
-    width: 0;
-}
+   Shared parts (menu, footer, progress bar, page margin) are in
+   common.css. Colours and sizes come from variables.css.
+   ===================================================================== */
 
-#scrollPath
-{
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 8px;
-    height: 100%;
-    background-color: rgba(255,255,255,0.05);
-}
 
-#progressBar
-{
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 8px;
-    background: linear-gradient(to top, #008aff, #00ffe7);
-    animation: animate 5s linear infinite;
-}
+/* ---------------------------------------------------------------------
+   WHITE CARD
+   --------------------------------------------------------------------- */
 
-@keyframes animate
-{
-    0%,100%
-    {
-        filter: hue-rotate(0deg);
-    }
-    50%
-    {
-        filter: hue-rotate(360deg);
-    }
-}
-
-#progressBar:before
-{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, #008aff, #00ffe7);
-    filter: blur(10px);
-}
-
-#progressBar:after
-{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, #008aff, #00ffe7);
-    filter: blur(30px);
-}
-
-#all
-{
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    transition: 0.5s;
-}
-
-header {
-    position: absolute;
-    justify-content: space-between;
-    display: flex;
-    padding: 30px 30px;
-    z-index: 10000;
-    transition: 0.6s;
-}
-
-header #toggle
-{
-    position: relative;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-
-header #toggle::before
-{
-    content: '';
-    position: absolute;
-    top: 25%;
-    width: 100%;
-    height: 4px;
-    background: #3d3d3d;
-}
-
-header #toggle::after
-{
-    content: '';
-    position: absolute;
-    bottom: 25%;
-    width: 100%;
-    height: 4px;
-    background: #3d3d3d;
-}
-
-.page.active header #toggle::before
-{
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) rotate(45deg);
-}
-
-.page.active header #toggle::after
-{
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) rotate(-45deg);
-}
-
-.page.active {
-    transform: translateX(400px);
-}
-
-#navigation
-{
-    display: block;
-    position: fixed;
-    top: 0;
-    left: -400px;
-    width: 392px;
-    height: 100vh;
-    background: rgb(177,145,255);
-    background: linear-gradient(15deg, rgba(177,145,255,1) 21%, rgba(248,118,102,1) 100%);
-    display: grid;
-    place-items: center;
-
-}
-
-#navigation ul
-{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    transform: translateX(-10%);
-}
-
-#navigation ul li
-{
-    list-style: none;
-    padding-top: 25px;
-}
-
-#navigation ul li a
-{
-    color: white;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 3em;
-    font-weight: 250;
-    text-transform: uppercase;
-    font-family: mainFont;
-
-}
-
-#navigation ul li a:hover
-{
-    color: #3d3d3d;
-}
-
-#secBackground
-{
+#secBackground {
     width: 100%;
     min-height: 600px;
-    background-color: white;
+    background-color: var(--color-card);
+    border-radius: var(--card-radius);
 }
 
-#space
-{
+/* Empty space at the bottom of the card */
+#space {
     height: 50px;
 }
-#space_
-{
-    height: 25px;
+
+/* The article area inside the card */
+#articleSection {
+    display: inline-block;
+    width: 96%;
+    margin-top: 25px;
+    margin-left: 2%;     /* 2% left + 96% wide = 2% left over on the right */
 }
- 
-#titleSec
-{
+
+
+/* ---------------------------------------------------------------------
+   TITLE AND HEADINGS
+   --------------------------------------------------------------------- */
+
+/* Centres the main title */
+#titleSec {
     display: grid;
     place-items: center;
     width: 100%;
 }
 
-h1
-{
-    text-align: center;
-    font-family: mainFont;
-    color: #3d3d3d;
-    font-size: 3.5em;
+/* Main title, e.g. "How I Made This Website" */
+h1 {
     width: fit-content;
-    padding: 0;
     margin: 0;
-    text-decoration: underline;
+    padding: 0;
+    text-align: center;
+    font-family: var(--font-main);
+    font-size: 3.5em;
     font-weight: bold;
-    text-decoration-color: #551a8b;
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-title-underline);
 }
 
-
-
-#articleSection
-{
-    display: inline-block;
-    margin-top: 25px;
-    margin-left: 2%;
-    width: 96%;
-}
-
-h2
-{
+/* Section headings, e.g. "Why?" */
+h2 {
     display: block;
-    font-family: mainFont;
-    color: #3d3d3d;
-    font-size: 3em;
     margin-bottom: 0;
+    font-family: var(--font-main);
+    font-size: 3em;
+    color: var(--color-text);
     text-decoration: underline;
 }
 
-div.paragSec p 
-{
-    font-family: mainFont;
-    color: #3d3d3d;
+
+/* ---------------------------------------------------------------------
+   PARAGRAPHS AND LINKS
+   --------------------------------------------------------------------- */
+
+div.paragSec p {
+    text-align: justify;   /* straight edges on both sides */
+    font-family: var(--font-main);
     font-size: 1.5em;
-    text-align: justify;
     font-weight: lighter;
+    color: var(--color-text);
 }
 
-#Info_Button
-{
-    text-decoration: none;
-    color: #f87666;
+/* Photos added with the project editor: centred, rounded, with a shadow */
+.photoSec {
+    margin: 25px 0;
 }
 
-#Info_Button:hover
-{
-    color: #b191ff;
-}
-
-footer {
-    background-color: #f87666;
-    background-attachment: scroll;
-    padding: 3px 3px 0 0;
-    position: fixed;
-    bottom: 0pt;
-    left: 0;
+.articlePhoto {
     display: block;
     width: 100%;
+    max-width: var(--article-photo-max-width);
+    margin: 0 auto;
+    border-radius: var(--photo-radius);
+    box-shadow: var(--photo-shadow);
 }
 
-footer div{
-    padding-left: 4px;
+/* The "INFO" link at the end of the article */
+#Info_Button {
+    text-decoration: none;
+    color: var(--color-accent);
 }
+
+#Info_Button:hover {
+    color: var(--color-accent-2);
+}
+
+
+/* ---------------------------------------------------------------------
+   SMALLER SCREENS: shrink the text step by step
+   --------------------------------------------------------------------- */
 
 @media only screen and (max-width: 850px) {
-    h1{
-        font-size: 3em;
-    }
-
-    h2{
-        font-size: 2.8em;
-    }
-    
-    div.paragSec p 
-{
-        font-size: 1.4em;
-    }
+    h1 { font-size: 3em; }
+    h2 { font-size: 2.8em; }
+    div.paragSec p { font-size: 1.4em; }
 }
 
 @media only screen and (max-width: 600px) {
-    h1{
-        font-size: 2em;
-    }
-
-    h2{
-        font-size: 2em;
-    }
-
-    div.paragSec p 
-    {
-        font-size: 1.2em;
-    }
+    h1 { font-size: 2em; }
+    h2 { font-size: 2em; }
+    div.paragSec p { font-size: 1.2em; }
 }
 
 @media only screen and (max-width: 475px) {
-    h1{
+    h1 {
         font-size: 1.8em;
         width: 240px;
     }
-
-    h2{
-        font-size: 1.8em;
-    }
-
-    div.paragSec p{
-        font-size: 1em;
-    }
-
-    header{
-        padding: 10px 15px;
-    }
+    h2 { font-size: 1.8em; }
+    div.paragSec p { font-size: 1em; }
 }
-
-@media only screen and (min-width: 1050px) {
-    header #toggle
-    {
-        width: 40px;
-        height: 40px;
-    }
-
-    header #toggle::before
-    {
-        height: 5px;
-    }
-
-    header #toggle::after
-    {
-        height: 5px;
-    }
-
-}
-

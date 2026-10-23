@@ -4,35 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PageOfAPear</title>
+
+    <!-- Styles, in this order:
+         1. variables.css - all colours and sizes (change things here)
+         2. common.css    - parts shared by every page (menu, footer, ...)
+         3. this page's own styles -->
+    <link rel="stylesheet" href="../styles/variables.css" />
+    <link rel="stylesheet" href="../styles/common.css" />
     <link rel="stylesheet" href="../styles/projects_style.css" />
 </head>
 <body>
+    <!-- Scroll progress bar on the right edge (styled in common.css, moved by main.js) -->
     <div id="progressBar"></div>
     <div id="scrollPath"></div>
 
+    <!-- #all wraps the whole page; it slides right when the menu opens -->
     <section class="page" id="all">
-        
-        <h1>Hi!</h1>
+
+        <!-- Menu icon (top left) -->
         <header>
-            <div id="toggle" onclick="toggle()"> </div>
+            <div id="toggle"></div>
         </header>
 
+        <!-- White card with the list of projects -->
         <section id="secBackground">
+
+            <!-- Title at the top centre of the card.
+                 Clicking it opens the project editor (see scripts/projects.js). -->
+            <h1 id="pageTitle">Hi!</h1>
+
             <div id="space"></div>
 
+            <!-- One <li> per project. The project editor adds new ones
+                 automatically; to add one by hand, copy a whole
+                 <li>...</li> block and change the link and the title.
+                 Keep the marker line below: the editor uses it. -->
             <ul id="myProjectsUL">
                 <li class="projectLi">
                     <a href="project/thissite.html">
                         <div class="contentTitle">
                             How I Made This Website
                         </div>
-                    </a>    
+                    </a>
                 </li>
 
+                <!-- The project editor adds new projects above this line -->
             </ul>
 
         </section>
 
+        <!-- Slide-out menu (hidden off the left edge until the icon is clicked) -->
         <div id="navigation">
             <ul>
                 <li><a href="../index.html">Welcome</a></li>
@@ -42,26 +63,14 @@
             </ul>
         </div>
 
-    </section> 
+    </section>
 
-
-    <script type="text/javascript">
-        function toggle()
-        {
-            var all = document.getElementById('all');
-            all.classList.toggle('active');
-        }
-    </script>
-
-    <script type="text/javascript">
-        let progress = document.getElementById('progressBar');
-        let totalHeight = document.body.scrollHeight - window.innerHeight;
-        window.onscroll = ()=>{
-            let progressHeight = (window.pageYOffset / totalHeight) * 100;
-            progress.style.height = progressHeight + "%";
-        }
-    </script>
-
+    <!-- Footer bar at the bottom of the window -->
     <footer><div> © 2026 Tuna Ercan</div></footer>
+
+    <!-- Menu and progress bar behaviour, shared by every page -->
+    <script src="../scripts/main.js"></script>
+    <!-- Hidden entrance to the project editor, only on this page -->
+    <script src="../scripts/projects.js"></script>
 </body>
 </html>

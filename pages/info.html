@@ -3,22 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>PageOfAPear</title>
-    <link rel="stylesheet" href="../styles/info_style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles, in this order:
+         1. variables.css - all colours and sizes (change things here)
+         2. common.css    - parts shared by every page (menu, footer, ...)
+         3. this page's own styles -->
+    <link rel="stylesheet" href="../styles/variables.css" />
+    <link rel="stylesheet" href="../styles/common.css" />
+    <link rel="stylesheet" href="../styles/info_style.css" />
 </head>
 <body>
+    <!-- Scroll progress bar on the right edge (styled in common.css, moved by main.js) -->
     <div id="progressBar"></div>
     <div id="scrollPath"></div>
 
+    <!-- #all wraps the whole page; it slides right when the menu opens -->
     <section class="page" id="all">
 
-        <h1>Hi There!</h1>
-
-        <header id="galleryHeader">
-            <div id="toggle" onclick="toggle()"> </div>
+        <!-- Menu icon (top left) -->
+        <header>
+            <div id="toggle"></div>
         </header>
 
+        <!-- Card, top block: title, text and contact links -->
         <section id="secBackground">
+
+            <!-- Title at the top centre of the card -->
+            <h1>Hi There!</h1>
+
             <div id="space"></div>
 
             <p id="studentTxt">I'm a fourth-year mechanical engineering student at METU, who really likes science and technology.</p>
@@ -27,8 +40,10 @@
             <a href="mailto:tuna.ercan04@gmail.com">Send a Mail</a>
         </section>
 
+        <!-- Card, white gap -->
         <div id="space__"></div>
 
+        <!-- Card, smiley face (eyes follow the mouse, see scripts/info.js) -->
         <section id="faceSec">
             <div class="face">
                 <div class="eyes">
@@ -38,8 +53,10 @@
             </div>
         </section>
 
+        <!-- Card, bottom white gap -->
         <div id="space_"></div>
 
+        <!-- Slide-out menu (hidden off the left edge until the icon is clicked) -->
         <div id="navigation">
             <ul>
                 <li><a href="../index.html">Welcome</a></li>
@@ -49,41 +66,14 @@
             </ul>
         </div>
 
-    </section> 
+    </section>
 
-
-    <script type="text/javascript">
-        function toggle()
-        {
-            var all = document.getElementById('all');
-            all.classList.toggle('active');
-        }
-    </script>
-
-    <script type="text/javascript">
-        let progress = document.getElementById('progressBar');
-        let totalHeight = document.body.scrollHeight - window.innerHeight;
-        window.onscroll = ()=>{
-            let progressHeight = (window.pageYOffset / totalHeight) * 100;
-            progress.style.height = progressHeight + "%";
-        }
-    </script>
-
-    <script type="text/javascript">
-        document.querySelector('body').addEventListener('mousemove', eyeball);
-        function eyeball(event)
-        {
-            var eye = document.querySelectorAll(".eye");
-            eye.forEach(function(eye){
-                let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
-                let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
-                let radian = Math.atan2(event.pageX - x, event.pageY - y);
-                let rot = (radian * (180 / Math.PI) * -1) + 270;
-                eye.style.transform = "rotate(" + rot + "deg)";
-            });
-        }
-    </script>
-
+    <!-- Footer bar at the bottom of the window -->
     <footer><div> © 2026 Tuna Ercan</div></footer>
+
+    <!-- Menu and progress bar behaviour, shared by every page -->
+    <script src="../scripts/main.js"></script>
+    <!-- Moving eyes, only on this page -->
+    <script src="../scripts/info.js"></script>
 </body>
 </html>

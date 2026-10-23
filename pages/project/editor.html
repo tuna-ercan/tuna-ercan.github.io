@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Editor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Ask search engines not to list this page -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- The editor uses the site's colours (variables.css) and its own layout -->
+    <link rel="stylesheet" href="../../styles/variables.css" />
+    <link rel="stylesheet" href="../../styles/editor_style.css" />
+</head>
+<body>
+
+    <!-- PROJECT EDITOR
+         Opened by clicking the "Hi!" title on the Projects page.
+         Left: the form. Right: a live preview of the project page.
+         All the logic is in scripts/editor.js. -->
+    <main class="editor">
+
+        <!-- Left side: the form -->
+        <section class="form">
+            <label class="field">
+                Title
+                <input id="title" type="text">
+            </label>
+            <p class="fileName" id="fileName"></p>
+
+            <!-- Sections and photos are added here by editor.js -->
+            <div id="blocks"></div>
+
+            <div class="buttonRow">
+                <button type="button" id="addSection">+ Section</button>
+                <button type="button" id="addPhoto">+ Photo</button>
+            </div>
+
+            <p class="hint">Empty line = new paragraph &middot; Link: [text](https://...)</p>
+
+            <div class="buttonRow">
+                <button type="button" id="save" class="primary">Save</button>
+                <button type="button" id="clear">Clear</button>
+            </div>
+
+            <p id="status"></p>
+        </section>
+
+        <!-- Right side: live preview of the project page -->
+        <iframe id="preview" title="Preview"></iframe>
+    </main>
+
+
+    <!-- Blueprints for the blocks. editor.js copies one of these each
+         time you add a section or a photo. -->
+    <template id="sectionTemplate">
+        <div class="block">
+            <div class="blockBar">
+                <span>Section</span>
+                <span>
+                    <button type="button" data-action="up">&uarr;</button>
+                    <button type="button" data-action="down">&darr;</button>
+                    <button type="button" data-action="remove">&times;</button>
+                </span>
+            </div>
+            <input class="heading" type="text" placeholder="Heading">
+            <textarea class="text" rows="7" placeholder="Text"></textarea>
+        </div>
+    </template>
+
+    <template id="photoTemplate">
+        <div class="block">
+            <div class="blockBar">
+                <span>Photo</span>
+                <span>
+                    <button type="button" data-action="up">&uarr;</button>
+                    <button type="button" data-action="down">&darr;</button>
+                    <button type="button" data-action="remove">&times;</button>
+                </span>
+            </div>
+            <input class="photoInput" type="file" accept="image/*">
+            <img class="thumb" alt="">
+        </div>
+    </template>
+
+    <script src="../../scripts/editor.js"></script>
+</body>
+</html>

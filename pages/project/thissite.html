@@ -3,25 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>PageOfAPear</title>
-    <link rel="stylesheet" href="../../styles/projectPage_style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles, in this order:
+         1. variables.css - all colours and sizes (change things here)
+         2. common.css    - parts shared by every page (menu, footer, ...)
+         3. styles for project article pages -->
+    <link rel="stylesheet" href="../../styles/variables.css" />
+    <link rel="stylesheet" href="../../styles/common.css" />
+    <link rel="stylesheet" href="../../styles/projectPage_style.css" />
 </head>
 <body>
 
+    <!-- Scroll progress bar on the right edge (styled in common.css, moved by main.js) -->
     <div id="progressBar"></div>
     <div id="scrollPath"></div>
 
+    <!-- #all wraps the whole page; it slides right when the menu opens -->
     <section class="page" id="all">
 
-        <header >
-            <div id="toggle" onclick="toggle()"> </div>
+        <!-- Menu icon (top left) -->
+        <header>
+            <div id="toggle"></div>
         </header>
 
+        <!-- White card -->
         <section id="secBackground">
 
+            <!-- The article: a title, then <h2> headings each followed by a paragraph -->
             <section id="articleSection">
 
-                
+
                 <section id="titleSec"><h1>How I Made This Website</h1></section>
                 
                 <h2>Welcome!</h2>
@@ -72,6 +84,7 @@
         <div id="space"></div>
         </section>
 
+        <!-- Slide-out menu (hidden off the left edge until the icon is clicked) -->
         <div id="navigation">
             <ul>
                 <li><a href="../../index.html">Welcome</a></li>
@@ -81,26 +94,12 @@
             </ul>
         </div>
 
-    </section> 
+    </section>
 
-
-    <script type="text/javascript">
-        function toggle()
-        {
-            var all = document.getElementById('all');
-            all.classList.toggle('active');
-        }
-    </script>
-
-    <script type="text/javascript">
-        let progress = document.getElementById('progressBar');
-        let totalHeight = document.body.scrollHeight - window.innerHeight;
-        window.onscroll = ()=>{
-            let progressHeight = (window.pageYOffset / totalHeight) * 100;
-            progress.style.height = progressHeight + "%";
-        }
-    </script>
-    
+    <!-- Footer bar at the bottom of the window -->
     <footer><div> © 2026 Tuna Ercan</div></footer>
+
+    <!-- Menu and progress bar behaviour, shared by every page -->
+    <script src="../../scripts/main.js"></script>
 </body>
 </html>

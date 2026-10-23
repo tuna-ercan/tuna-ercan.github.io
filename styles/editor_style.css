@@ -1,0 +1,166 @@
+/* =====================================================================
+   editor_style.css  -  ONLY FOR THE PROJECT EDITOR (pages/project/editor.html)
+   =====================================================================
+
+   Layout: the form on the left, the live preview on the right.
+   On narrow screens the preview moves below the form.
+   Colours come from variables.css.
+   ===================================================================== */
+
+body {
+    margin: 0;
+    background-color: var(--color-background);
+    font-family: system-ui, sans-serif;   /* plain font for the tool itself */
+    color: var(--color-text);
+}
+
+/* Two columns: form (fixed width) and preview (the rest) */
+.editor {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 12px;
+    height: 100vh;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+
+/* ---------------------------------------------------------------------
+   FORM (left)
+   --------------------------------------------------------------------- */
+
+.form {
+    overflow-y: auto;          /* the form scrolls on its own */
+    padding: 16px;
+    background-color: var(--color-card);
+    border-radius: var(--card-radius);
+}
+
+.field {
+    display: block;
+    font-weight: 600;
+}
+
+input[type="text"],
+textarea {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font: inherit;
+    font-weight: normal;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* "pages/project/....html" under the title */
+.fileName {
+    margin: 6px 0 14px;
+    font-size: 0.85em;
+    opacity: 0.6;
+}
+
+/* One section or photo */
+.block {
+    margin-bottom: 12px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--card-radius);
+}
+
+/* Top line of a block: its name and the up / down / remove buttons */
+.blockBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.blockBar button {
+    padding: 2px 8px;
+}
+
+/* Small preview of a chosen photo */
+.thumb {
+    display: block;
+    max-width: 100%;
+    max-height: 160px;
+    margin-top: 8px;
+    border-radius: 4px;
+}
+
+.thumb:not([src]) {
+    display: none;     /* hide until a photo is chosen */
+}
+
+.buttonRow {
+    display: flex;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+button {
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font: inherit;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+/* The Save button */
+button.primary {
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    color: white;
+}
+
+.hint {
+    font-size: 0.85em;
+    opacity: 0.6;
+}
+
+/* Message after saving (or when something is missing) */
+#status {
+    white-space: pre-line;
+}
+
+#status.error {
+    color: #c0392b;
+}
+
+
+/* ---------------------------------------------------------------------
+   PREVIEW (right)
+   --------------------------------------------------------------------- */
+
+#preview {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--card-radius);
+    background-color: var(--color-background);
+}
+
+
+/* ---------------------------------------------------------------------
+   NARROW SCREENS: form on top, preview below
+   --------------------------------------------------------------------- */
+
+@media only screen and (max-width: 800px) {
+    .editor {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 80vh;
+        height: auto;
+    }
+}

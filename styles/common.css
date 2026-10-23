@@ -1,0 +1,249 @@
+/* =====================================================================
+   common.css  -  STYLES SHARED BY EVERY PAGE
+   =====================================================================
+
+   Loaded on every page, after variables.css and before the page's own
+   stylesheet. It contains the parts that look the same everywhere:
+
+     1. Font
+     2. Page background and the grey margin around the card
+     3. Scroll progress bar (right edge)
+     4. Menu icon (top left) and the slide-out menu
+     5. Footer
+     6. Adjustments for small / large screens
+
+   Colours and sizes are not written here directly; they come from
+   variables.css, e.g. var(--color-accent).
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   1. FONT
+   Loads the Fjalla One font file and gives it the name "mainFont".
+   --------------------------------------------------------------------- */
+
+@font-face {
+    font-family: mainFont;
+    src: url("../fonts/fjallaone.ttf");
+}
+
+
+/* ---------------------------------------------------------------------
+   2. PAGE BACKGROUND AND MARGIN
+   --------------------------------------------------------------------- */
+
+body {
+    background-color: var(--color-background);
+    margin: 0;
+    padding: 0;
+}
+
+/* Hide the browser's own scrollbar (the progress bar replaces it) */
+::-webkit-scrollbar {
+    width: 0;
+}
+
+/* #all wraps everything on the page. Its padding is the grey margin
+   you see around the white card. */
+#all {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;               /* at least the full screen height */
+    padding: var(--page-margin);
+    box-sizing: border-box;          /* padding is counted inside the 100% width */
+    transition: 0.5s;                /* smooth slide when the menu opens */
+}
+
+
+/* ---------------------------------------------------------------------
+   3. SCROLL PROGRESS BAR
+   Two thin strips fixed to the right edge of the window:
+     #scrollPath  - the faint full-height track
+     #progressBar - the glowing bar; main.js sets its height while you scroll
+   --------------------------------------------------------------------- */
+
+#scrollPath {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: var(--progress-bar-width);
+    height: 100%;
+    background-color: var(--color-progress-track);
+}
+
+#progressBar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: var(--progress-bar-width);
+    background: linear-gradient(to top, var(--color-progress-start), var(--color-progress-end));
+    animation: progress-colour-cycle 5s linear infinite;
+}
+
+/* Two blurred copies of the bar behind it make the glow
+   (::before is a small glow, ::after a wide one). */
+#progressBar::before,
+#progressBar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, var(--color-progress-start), var(--color-progress-end));
+}
+
+#progressBar::before {
+    filter: blur(10px);
+}
+
+#progressBar::after {
+    filter: blur(30px);
+}
+
+/* Slowly cycles the bar through all colours and back */
+@keyframes progress-colour-cycle {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50%      { filter: hue-rotate(360deg); }
+}
+
+
+/* ---------------------------------------------------------------------
+   4. MENU ICON AND SLIDE-OUT MENU
+   Clicking the icon adds the class "active" to #all (see main.js).
+   "active" turns the 3 lines into an X and slides the page to the
+   right, uncovering the menu that waits off-screen on the left.
+   --------------------------------------------------------------------- */
+
+/* The header only holds the menu icon, in the top-left corner */
+header {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    z-index: 10000;     /* keep it above everything else */
+    transition: 0.6s;
+}
+
+/* The clickable icon. Its two lines are drawn with ::before and ::after. */
+header #toggle {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+header #toggle::before,
+header #toggle::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;        /* thickness of the lines */
+    background: var(--color-menu-icon);
+}
+
+header #toggle::before { top: 25%; }     /* upper line */
+header #toggle::after  { bottom: 25%; }  /* lower line */
+
+/* Menu open: move both lines to the middle and rotate them into an X */
+.page.active header #toggle::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.page.active header #toggle::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Menu open: slide the whole page to the right */
+.page.active {
+    transform: translateX(var(--menu-width));
+}
+
+/* The menu panel. It sits just off the left edge of the screen, so it
+   only becomes visible when the page slides away. */
+#navigation {
+    position: fixed;
+    top: 0;
+    left: calc(-1 * var(--menu-width));
+    width: calc(var(--menu-width) - 8px);
+    height: 100vh;
+    background: var(--color-accent-2);  /* fallback for very old browsers */
+    background: linear-gradient(15deg, var(--color-accent-2) 21%, var(--color-accent) 100%);
+    display: grid;
+    place-items: center;   /* centre the list of links */
+}
+
+#navigation ul {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-10%);
+}
+
+#navigation ul li {
+    list-style: none;
+    padding-top: 25px;    /* space between the links */
+}
+
+#navigation ul li a {
+    display: inline-block;
+    color: var(--color-menu-text);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--font-main);
+    font-size: 3em;
+    font-weight: 250;
+}
+
+#navigation ul li a:hover {
+    color: var(--color-menu-text-hover);
+}
+
+
+/* ---------------------------------------------------------------------
+   5. FOOTER
+   The coloured bar with the copyright, always at the bottom of the window.
+   --------------------------------------------------------------------- */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    padding: 3px 3px 0 0;
+    background-color: var(--color-accent);
+}
+
+footer div {
+    padding-left: 4px;
+}
+
+
+/* ---------------------------------------------------------------------
+   6. SMALL AND LARGE SCREENS
+   --------------------------------------------------------------------- */
+
+/* Phones: bring the menu icon closer to the corner */
+@media only screen and (max-width: 475px) {
+    header {
+        padding: 10px 15px;
+    }
+}
+
+/* Wide screens: make the menu icon a bit bigger */
+@media only screen and (min-width: 1050px) {
+    header #toggle {
+        width: 40px;
+        height: 40px;
+    }
+
+    header #toggle::before,
+    header #toggle::after {
+        height: 5px;
+    }
+}
