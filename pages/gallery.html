@@ -29,12 +29,21 @@
         <!-- Link at the top centre -->
         <a id="instaLink" href="https://www.instagram.com/photo_and_pear/">Instagram Page</a>
 
-        <!-- White card with the photos.
-             Each .row holds two photos. To add photos, copy a whole
-             <div class="row">...</div> block and change the file names. -->
+        <!-- White card with the photos: the Instagram feed first,
+             then your own photos below it -->
         <section id="secBackground">
             <div id="space"></div>
 
+            <!-- Instagram feed from @photo_and_pear, shown by Behold (behold.so).
+                 It updates by itself when you post on Instagram (the free
+                 plan shows the latest 6 posts, refreshed once a day).
+                 Its layout (columns, spacing, corners) is set in your
+                 Behold dashboard, not here. -->
+            <behold-widget feed-id="VwFMHT0ixDUHdQXHCttm"></behold-widget>
+
+            <!-- Your own photos, two per row. To add photos, copy a whole
+                 <div class="row">...</div> block and change the file names
+                 (the files go in images/gallery/). -->
             <div class="row">
                 <div class="col"><img src="../images/gallery/1f.JPG" ></div>
                 <div class="col"><img src="../images/gallery/2f.JPG" ></div>
@@ -95,5 +104,15 @@
 
     <!-- Menu and progress bar behaviour, shared by every page -->
     <script src="../scripts/main.js"></script>
+
+    <!-- Loads Behold's widget code, which fills in <behold-widget> above
+         (this is the snippet from the Behold dashboard, unchanged) -->
+    <script>
+      (() => {
+        if(window.__bhldScript)return;window.__bhldScript=true;
+        const d=document,s=d.createElement("script");s.type="module";
+        s.src="https://w.behold.so/widget.js";setTimeout(()=>{d.head.append(s);},0);
+      })();
+    </script>
 </body>
 </html>

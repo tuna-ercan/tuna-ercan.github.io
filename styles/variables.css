@@ -78,10 +78,13 @@
        PAGE-SPECIFIC COLOURS AND SIZES
        ------------------------------------------------------------------ */
 
-    /* Gallery */
+    /* Photos (your gallery photos and photos on project pages) */
     --photo-radius: 10px;                            /* rounded corners of the photos */
-    --photo-gap:    14px;                            /* space between the photos */
     --photo-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);  /* soft shadow under each photo */
+
+    /* Gallery */
+    --photo-gap:        14px;  /* space between your gallery photos */
+    --gallery-feed-gap: 30px;  /* space between the Instagram feed and your photos */
     --color-instagram-underline: #962fbf;
     --gradient-instagram: linear-gradient(15deg, #feda75, #fa7e1e, #d62975, #962fbf, #4f5bd5);
 

@@ -2,8 +2,14 @@
    gallery_style.css  -  ONLY FOR THE GALLERY PAGE (pages/gallery.html)
    =====================================================================
 
-   The gallery is a white card with the "Instagram Page" link at the top
-   and the photos below it, two per row.
+   The gallery is a white card with, from top to bottom:
+     - the "Instagram Page" link
+     - the Instagram feed (<behold-widget>)
+     - your own photos, two per row
+
+   The Instagram feed is drawn by Behold. Its columns, spacing, corners
+   and number of posts are set in the Behold dashboard, so this file
+   can only control the space around it.
 
    Shared parts (menu, footer, progress bar, page margin) are in
    common.css. Colours and sizes come from variables.css.
@@ -48,7 +54,7 @@
     box-sizing: border-box;
 }
 
-/* Empty spacer at the top of the card (keeps the photos below the link) */
+/* Empty spacer at the top of the card (keeps the feed below the link) */
 #space {
     height: 120px;
 }
@@ -60,7 +66,19 @@
 
 
 /* ---------------------------------------------------------------------
-   PHOTO GRID
+   INSTAGRAM FEED
+   --------------------------------------------------------------------- */
+
+/* Make the feed a full-width block and leave space between it and
+   your photos below */
+behold-widget {
+    display: block;
+    margin-bottom: var(--gallery-feed-gap);
+}
+
+
+/* ---------------------------------------------------------------------
+   YOUR PHOTOS
    Each .row holds two .col boxes; each .col holds one photo.
    --------------------------------------------------------------------- */
 
