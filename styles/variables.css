@@ -39,7 +39,7 @@
 
     --color-menu-icon:       #3d3d3d; /* the 3-line (hamburger) icon on most pages */
     --color-menu-icon-home:  white;   /* the icon on the homepage (it sits on the photo) */
-    --color-menu-icon-on-card: #3d3d3d; /* homepage icon after scrolling past the photo */
+    --color-menu-icon-outline: rgba(0, 0, 0, 0.6); /* thin outline around the homepage icon's lines */
     --color-menu-text:       white;   /* menu links */
     --color-menu-text-hover: #3d3d3d; /* menu links when the mouse is over them */
 

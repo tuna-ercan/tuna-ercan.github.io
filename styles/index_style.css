@@ -19,6 +19,7 @@
        so it keeps the same spot on the banner photo at every screen size. */
     --menu-icon-top: 4.3vw;
     --menu-icon-left: 3.7vw;
+    --menu-icon-outline-width: 1px;   /* thickness of the dark outline around the lines */
     --menu-neon-core: clamp(2px, 0.2vw, 4px);
     --menu-neon-inner: clamp(5px, 0.45vw, 8px);
     --menu-neon-small: clamp(10px, 0.8vw, 16px);
@@ -47,10 +48,13 @@ header #toggle::after {
     height: clamp(4px, 0.4vw, 6px);
 }
 
+/* The lines: white, a thin dark outline so they show on any background
+   (photo or white card), then the neon glow */
 header #toggle::before,
 header #toggle::after {
     background: var(--color-menu-icon);
     box-shadow:
+        0 0 0 var(--menu-icon-outline-width) var(--color-menu-icon-outline),
         0 0 var(--menu-neon-core) white,
         0 0 var(--menu-neon-inner) white,
         0 0 var(--menu-neon-small) var(--color-accent-2),
@@ -60,15 +64,15 @@ header #toggle::after {
     animation: menu-neon-pulse 1.6s ease-in-out infinite alternate;
 }
 
-/* Once you scroll past the photo, the icon is over the white card:
-   index.js adds "overCard" and the lines turn dark, keeping only the
-   purple glow, so the icon stays visible. */
-header.overCard #toggle::before,
-header.overCard #toggle::after {
-    background: var(--color-menu-icon-on-card);
-    box-shadow:
-        0 0 var(--menu-neon-small) var(--color-accent-2),
-        0 0 var(--menu-neon-medium) var(--color-accent-2);
+/* The menu panel on this page is outside #all (see index.html), so it
+   doesn't move with the sliding page. Instead it slides in by itself,
+   by the same distance and at the same speed as the page. */
+#navigation {
+    transition: transform 0.5s;
+}
+
+.menu-open #navigation {
+    transform: translateX(var(--menu-width));
 }
 
 @keyframes menu-neon-pulse {
