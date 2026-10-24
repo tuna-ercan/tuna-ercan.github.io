@@ -15,18 +15,24 @@
    easier to notice against the banner photo. */
 :root {
     --color-menu-icon: var(--color-menu-icon-home);
+    --menu-neon-core: clamp(2px, 0.2vw, 4px);
+    --menu-neon-inner: clamp(5px, 0.45vw, 8px);
+    --menu-neon-small: clamp(10px, 0.8vw, 16px);
+    --menu-neon-medium: clamp(20px, 1.5vw, 30px);
+    --menu-neon-wide: clamp(34px, 2.5vw, 50px);
+    --menu-neon-outer: clamp(52px, 3.8vw, 76px);
 }
 
 header #toggle::before,
 header #toggle::after {
     background: white;
     box-shadow:
-        0 0 2px white,
-        0 0 6px white,
-        0 0 12px var(--color-accent-2),
-        0 0 24px var(--color-accent-2),
-        0 0 42px var(--color-accent-2),
-        0 0 64px var(--color-title-underline);
+        0 0 var(--menu-neon-core) white,
+        0 0 var(--menu-neon-inner) white,
+        0 0 var(--menu-neon-small) var(--color-accent-2),
+        0 0 var(--menu-neon-medium) var(--color-accent-2),
+        0 0 var(--menu-neon-wide) var(--color-accent-2),
+        0 0 var(--menu-neon-outer) var(--color-title-underline);
     animation: menu-neon-pulse 1.6s ease-in-out infinite alternate;
 }
 
