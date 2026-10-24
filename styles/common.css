@@ -148,17 +148,14 @@ header #toggle::after {
 header #toggle::before { top: 25%; }     /* upper line */
 header #toggle::after  { bottom: 25%; }  /* lower line */
 
-/* Menu open: move both lines to the middle and rotate them into an X.
-   (.menu-open is on <body>, for the homepage where the icon is outside #all) */
-.page.active header #toggle::before,
-.menu-open header #toggle::before {
+/* Menu open: move both lines to the middle and rotate them into an X */
+.page.active header #toggle::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.page.active header #toggle::after,
-.menu-open header #toggle::after {
+.page.active header #toggle::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);

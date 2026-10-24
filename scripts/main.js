@@ -20,9 +20,6 @@ const menuIcon = document.getElementById('toggle');
 
 menuIcon.addEventListener('click', function () {
     page.classList.toggle('active');
-    // Also mark the whole page, for a menu icon that sits outside #all
-    // (the homepage): common.css uses this to draw the X.
-    document.body.classList.toggle('menu-open', page.classList.contains('active'));
 });
 
 

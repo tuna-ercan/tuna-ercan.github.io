@@ -8,21 +8,18 @@
     <!-- Styles, in this order:
          1. variables.css - all colours and sizes (change things here)
          2. common.css    - parts shared by every page (menu, footer, ...)
-         3. this page's own styles -->
-    <link rel="stylesheet" href="styles/variables.css" />
-    <link rel="stylesheet" href="styles/common.css" />
-    <link rel="stylesheet" href="styles/index_style.css" />
+         3. this page's own styles
+         The "?v=4" makes browsers download a fresh copy instead of an old
+         saved one. After changing a CSS or JS file, raise the number on
+         every page (v=4 -> v=5). -->
+    <link rel="stylesheet" href="styles/variables.css?v=4" />
+    <link rel="stylesheet" href="styles/common.css?v=4" />
+    <link rel="stylesheet" href="styles/index_style.css?v=4" />
 </head>
 <body>
     <!-- Scroll progress bar on the right edge (styled in common.css, moved by main.js) -->
     <div id="progressBar"></div>
     <div id="scrollPath"></div>
-
-    <!-- Menu icon (top left). On this page it stays on screen while you
-         scroll, so it sits outside #all and doesn't slide with the page. -->
-    <header>
-        <div id="toggle"></div>
-    </header>
 
     <!-- #all wraps the whole page; it slides right when the menu opens -->
     <section class="page" id="all">
@@ -50,9 +47,18 @@
 
     </section>
 
-    <!-- Slide-out menu (hidden off the left edge until the icon is clicked).
-         On this page it sits outside #all, pinned to the screen like the
-         menu icon, so it opens in view even after scrolling down. -->
+    <!-- On this page the menu icon and the menu stay on screen while you
+         scroll, so they sit outside #all. They come right AFTER #all on
+         purpose: index_style.css uses "#all.active ~ ..." (= "when #all
+         is open, the things after it") to slide the menu in and turn the
+         icon into an X. -->
+
+    <!-- Menu icon (top left) -->
+    <header>
+        <div id="toggle"></div>
+    </header>
+
+    <!-- Slide-out menu (hidden off the left edge until the icon is clicked) -->
     <div id="navigation">
         <ul>
             <li><a href="index.html">Welcome</a></li>
@@ -66,6 +72,6 @@
     <footer id="nameFooter"><div> © 2026 Tuna Ercan</div></footer>
 
     <!-- Menu and progress bar behaviour, shared by every page -->
-    <script src="scripts/main.js"></script>
+    <script src="scripts/main.js?v=4"></script>
 </body>
 </html>
