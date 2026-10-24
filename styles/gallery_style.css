@@ -42,24 +42,22 @@
 }
 
 /* ---------------------------------------------------------------------
-   "VSCO PAGE" LINK (bottom centre)
+   "VSCO" LINK (bottom centre, right after your photos)
+   It is part of the normal page flow, so it always sits under the last
+   row of photos, however many photos there are.
    --------------------------------------------------------------------- */
 
 #vscoLink {
-    position: absolute;
-    left: 50%;
-    top: 97.5%;
-    transform: translate(-50%, 55%);   /* centre it horizontally */
-    align-self: center;
-    padding-top: 0.7%;
+    display: block;
+    width: fit-content;                         /* only as wide as the word */
+    margin: var(--gallery-feed-gap) auto 0;     /* space above; "auto" centres it */
     font-family: var(--font-main);
     font-size: 2em;
     color: var(--color-text);
     text-decoration-color: var(--color-vsco-underline);
 }
 
-
-/* On hover, fill the text with the Instagram colour gradient */
+/* On hover, fill the text with the VSCO colour gradient */
 #vscoLink:hover {
     text-decoration: none;
     background: var(--gradient-vsco);
@@ -86,9 +84,10 @@
     height: 120px;
 }
 
-/* Empty spacer after the last row of photos */
+/* Empty spacer after the VSCO link (the card's own bottom padding
+   adds 44px more) */
 #space_ {
-    height: 60px;
+    height: 0;
 }
 
 
@@ -133,7 +132,8 @@ behold-widget {
    --------------------------------------------------------------------- */
 
 @media only screen and (max-width: 475px) {
-    #instaLink {
+    #instaLink,
+    #vscoLink {
         font-size: 1.5em;
     }
 }

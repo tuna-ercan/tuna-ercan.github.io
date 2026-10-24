@@ -64,6 +64,9 @@
     --page-title-top: 20px; /* space between the top of the white card and the
                                page title ("Hi There!", "Hi!"); 20px lines the
                                title up with the menu icon */
+    --footer-height: 21px;  /* height of the coral footer bar; every page leaves
+                               this much extra space at the bottom so the
+                               footer doesn't cover the end of the card */
 
 
     /* ------------------------------------------------------------------

@@ -50,6 +50,9 @@ body {
     width: 100%;
     min-height: 100vh;               /* at least the full screen height */
     padding: var(--page-margin);
+    /* at the bottom, also leave room for the footer bar so it can't
+       cover the end of the white card */
+    padding-bottom: calc(var(--page-margin) + var(--footer-height));
     box-sizing: border-box;          /* padding is counted inside the 100% width */
     transition: 0.5s;                /* smooth slide when the menu opens */
 }
