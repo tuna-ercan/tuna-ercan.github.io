@@ -30,6 +30,7 @@
    while you scroll ("fixed"). It is outside #all in index.html, so it
    also stays put when the menu opens and becomes the X on top of it. */
 header {
+    transition: transform 0.5s;   /* slides at the same speed as the page */
     position: fixed;
     top: var(--menu-icon-top);
     left: var(--menu-icon-left);
@@ -69,6 +70,12 @@ header #toggle::after {
 }
 
 #all.active ~ #navigation {
+    transform: translateX(var(--menu-width));
+}
+
+/* The menu icon slides right together with the page, so the X sits at
+   the page's top-left corner instead of on top of the menu */
+#all.active ~ header {
     transform: translateX(var(--menu-width));
 }
 

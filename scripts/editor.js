@@ -185,9 +185,9 @@ function buildProjectPage(photoAddress) {
          1. variables.css - all colours and sizes (change things here)
          2. common.css    - parts shared by every page (menu, footer, ...)
          3. styles for project article pages -->
-    <link rel="stylesheet" href="../../styles/variables.css?v=4" />
-    <link rel="stylesheet" href="../../styles/common.css?v=4" />
-    <link rel="stylesheet" href="../../styles/projectPage_style.css?v=4" />
+    <link rel="stylesheet" href="../../styles/variables.css?v=5" />
+    <link rel="stylesheet" href="../../styles/common.css?v=5" />
+    <link rel="stylesheet" href="../../styles/projectPage_style.css?v=5" />
 </head>
 <body>
 
@@ -233,7 +233,7 @@ ${content}
     <footer><div> ${FOOTER_TEXT}</div></footer>
 
     <!-- Menu and progress bar behaviour, shared by every page -->
-    <script src="../../scripts/main.js?v=4"></script>
+    <script src="../../scripts/main.js?v=5"></script>
 </body>
 </html>
 `;
