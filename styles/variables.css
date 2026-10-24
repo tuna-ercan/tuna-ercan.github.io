@@ -59,7 +59,7 @@
        PAGE LAYOUT
        ------------------------------------------------------------------ */
 
-    --page-margin: 1.5%;   /* grey space around the white card (top and sides) */
+    --page-margin: 1.25%;   /* grey space around the white card (top and sides) */
     --card-radius: 6px;    /* how rounded the white card's corners are */
     --page-title-top: 20px; /* space between the top of the white card and the
                                page title ("Hi There!", "Hi!"); 20px lines the
@@ -87,6 +87,8 @@
     --gallery-feed-gap: 30px;  /* space between the Instagram feed and your photos */
     --color-instagram-underline: #962fbf;
     --gradient-instagram: linear-gradient(15deg, #feda75, #fa7e1e, #d62975, #962fbf, #4f5bd5);
+    --color-vsco-underline: #026700;
+    --gradient-vsco: linear-gradient(15deg, #5fdc00, #202020);
 
     /* Projects */
     --color-project-button: antiquewhite;  /* background of each project button */

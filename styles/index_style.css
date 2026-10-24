@@ -46,7 +46,7 @@ section.homePhotoSection {
 /* Round profile picture, centred on the banner's bottom edge */
 section.homePhotoSection img {
     position: relative;
-    width: 16%;
+    width: 18%;
     height: auto;
     border-radius: 50%;   /* turns the square photo into a circle */
 
@@ -54,8 +54,8 @@ section.homePhotoSection img {
        half its own width (8%) so its centre lands exactly there. */
     top: 100%;
     left: 50%;
-    margin-left: -8%;
-    margin-top: -8%;
+    margin-left: -9%;
+    margin-top: -9%;
 }
 
 
@@ -86,7 +86,8 @@ section.welcome ul {
     position: relative;
     left: 4.5%;            /* nudges the row so it looks centred */
     display: inline;
-    margin: auto;
+    margin-left: -0.75%;
+    margin-right: auto;
     padding: 0;
     list-style-type: none;
     white-space: nowrap;   /* keep all three on one line */
@@ -96,6 +97,11 @@ section.welcome li {
     display: inline;
 }
 
+section.welcome li:not(:last-child) {
+    margin-right: 1%;
+}
+
 section.welcome img {
     width: 30%;            /* each photo takes 30% of the card width */
+    border-radius: var(--photo-radius);   /* same rounded corners as the gallery photos */
 }

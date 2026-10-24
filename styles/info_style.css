@@ -86,6 +86,10 @@ h1 {
     border-radius: 0 0 var(--card-radius) var(--card-radius);  /* bottom corners only */
 }
 
+.contact-link + .contact-link {
+    margin-left: 20px;
+}
+
 
 /* ---------------------------------------------------------------------
    TEXT AND LINKS

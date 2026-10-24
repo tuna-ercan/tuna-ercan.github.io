@@ -32,10 +32,37 @@
     text-decoration-color: var(--color-instagram-underline);
 }
 
+
 /* On hover, fill the text with the Instagram colour gradient */
 #instaLink:hover {
     text-decoration: none;
     background: var(--gradient-instagram);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ---------------------------------------------------------------------
+   "VSCO PAGE" LINK (bottom centre)
+   --------------------------------------------------------------------- */
+
+#vscoLink {
+    position: absolute;
+    left: 50%;
+    top: 97.5%;
+    transform: translate(-50%, 55%);   /* centre it horizontally */
+    align-self: center;
+    padding-top: 0.7%;
+    font-family: var(--font-main);
+    font-size: 2em;
+    color: var(--color-text);
+    text-decoration-color: var(--color-vsco-underline);
+}
+
+
+/* On hover, fill the text with the Instagram colour gradient */
+#vscoLink:hover {
+    text-decoration: none;
+    background: var(--gradient-vsco);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -61,7 +88,7 @@
 
 /* Empty spacer after the last row of photos */
 #space_ {
-    height: 20px;
+    height: 60px;
 }
 
 
