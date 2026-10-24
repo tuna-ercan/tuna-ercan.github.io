@@ -11,10 +11,33 @@
    ===================================================================== */
 
 
-/* The menu icon sits on the dark banner photo here, so use the
-   homepage icon colour instead of the normal one. */
+/* The menu icon stays white for contrast, with a purple glow to make it
+   easier to notice against the banner photo. */
 :root {
     --color-menu-icon: var(--color-menu-icon-home);
+}
+
+header #toggle::before,
+header #toggle::after {
+    background: white;
+    box-shadow:
+        0 0 2px white,
+        0 0 6px white,
+        0 0 12px var(--color-accent-2),
+        0 0 24px var(--color-accent-2),
+        0 0 42px var(--color-accent-2),
+        0 0 64px var(--color-title-underline);
+    animation: menu-neon-pulse 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes menu-neon-pulse {
+    from {
+        filter: brightness(1);
+    }
+
+    to {
+        filter: brightness(1.45);
+    }
 }
 
 
