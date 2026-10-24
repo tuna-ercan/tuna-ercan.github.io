@@ -18,16 +18,17 @@
     <div id="progressBar"></div>
     <div id="scrollPath"></div>
 
+    <!-- Menu icon (top left). On this page it stays on screen while you
+         scroll, so it sits outside #all and doesn't slide with the page. -->
+    <header>
+        <div id="toggle"></div>
+    </header>
+
     <!-- #all wraps the whole page; it slides right when the menu opens -->
     <section class="page" id="all">
 
-    <!-- Banner photo with the menu icon and the round profile picture -->
+    <!-- Banner photo with the round profile picture -->
     <section class="homePhotoSection">
-        <!-- Menu icon, placed on the banner (see index_style.css) -->
-        <header>
-            <div id="toggle"></div>
-        </header>
-
         <img src="images/myPhoto.jpg"/>
     </section>
 
@@ -64,5 +65,7 @@
 
     <!-- Menu and progress bar behaviour, shared by every page -->
     <script src="scripts/main.js"></script>
+    <!-- Menu icon colour change when it is over the white card, only on this page -->
+    <script src="scripts/index.js"></script>
 </body>
 </html>

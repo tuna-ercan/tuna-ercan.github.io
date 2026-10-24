@@ -15,8 +15,10 @@
    easier to notice against the banner photo. */
 :root {
     --color-menu-icon: var(--color-menu-icon-home);
-    --menu-icon-top: 9%;     /* distance from the banner's top edge (% of its height) */
-    --menu-icon-left: 2.5%;  /* distance from the banner's left edge (% of its width) */
+    /* Where the menu icon sits on the screen. vw = % of the window width,
+       so it keeps the same spot on the banner photo at every screen size. */
+    --menu-icon-top: 4.3vw;
+    --menu-icon-left: 3.7vw;
     --menu-neon-core: clamp(2px, 0.2vw, 4px);
     --menu-neon-inner: clamp(5px, 0.45vw, 8px);
     --menu-neon-small: clamp(10px, 0.8vw, 16px);
@@ -25,12 +27,11 @@
     --menu-neon-outer: clamp(60px, 4.5vw, 90px);
 }
 
-/* On this page the menu icon sits inside the banner photo (see
-   index.html) and is placed relative to it: top is a % of the banner's
-   height, left a % of its width. So it stays on the same spot of the
-   photo at every screen size, and scrolls away with the banner. */
+/* On this page the menu icon stays in the top-left corner of the screen
+   while you scroll ("fixed"). It is outside #all in index.html, so it
+   also stays put when the menu opens and becomes the X on top of it. */
 header {
-    position: absolute;
+    position: fixed;
     top: var(--menu-icon-top);
     left: var(--menu-icon-left);
     padding: 0;
@@ -48,7 +49,7 @@ header #toggle::after {
 
 header #toggle::before,
 header #toggle::after {
-    background: white;
+    background: var(--color-menu-icon);
     box-shadow:
         0 0 var(--menu-neon-core) white,
         0 0 var(--menu-neon-inner) white,
@@ -57,6 +58,17 @@ header #toggle::after {
         0 0 var(--menu-neon-wide) var(--color-accent-2),
         0 0 var(--menu-neon-outer) var(--color-title-underline);
     animation: menu-neon-pulse 1.6s ease-in-out infinite alternate;
+}
+
+/* Once you scroll past the photo, the icon is over the white card:
+   index.js adds "overCard" and the lines turn dark, keeping only the
+   purple glow, so the icon stays visible. */
+header.overCard #toggle::before,
+header.overCard #toggle::after {
+    background: var(--color-menu-icon-on-card);
+    box-shadow:
+        0 0 var(--menu-neon-small) var(--color-accent-2),
+        0 0 var(--menu-neon-medium) var(--color-accent-2);
 }
 
 @keyframes menu-neon-pulse {
